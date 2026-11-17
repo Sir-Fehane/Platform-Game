@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 public class RinoScript : MonoBehaviour
@@ -22,16 +23,18 @@ public class RinoScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
         if(Time.time > time_move)
         {
             if (par_impar % 2 == 0)
             {
-                rigigbody.linearVelocity = new Vector2(10,0);
+                rigigbody.linearVelocity = new Vector2(10f, rigigbody.linearVelocity.y);
                 sprite.flipX = true;
             }
             else
             {
-                rigigbody.linearVelocity = new Vector2(-10,0);   
+                rigigbody.linearVelocity = new Vector2(-10f, rigigbody.linearVelocity.y);   
                 sprite.flipX = false;
             }
 
