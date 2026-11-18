@@ -7,7 +7,10 @@ using TMPro;
 public class PlayerScript : MonoBehaviour
 {
     public TextMeshProUGUI text_apples;
-    int countApples;
+    public TextMeshProUGUI text_timer;
+    float timer;
+
+    int countApples, levelTimer;
     SpriteRenderer sprite;
     Rigidbody2D rigidbody;
     BoxCollider2D boxCollider;
@@ -28,14 +31,33 @@ public class PlayerScript : MonoBehaviour
         control = true;
         hit = false;
         water= false;
-
         countApples = 0;
         text_apples.SetText(""+countApples);
+        levelTimer = 100;
+        text_timer.SetText(""+levelTimer);
+        timer = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        // Timer 
+
+
+        if(Time.time > timer)
+        {
+            levelTimer--;
+            text_timer.SetText("" + levelTimer);
+
+            if (levelTimer == 0)
+            {
+                SceneManager.LoadScene(2);    
+            }
+
+            timer++;    
+        }
+
         // Control
 
         if (control)
@@ -257,6 +279,6 @@ public class PlayerScript : MonoBehaviour
 
     public void goToDelete()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 }
