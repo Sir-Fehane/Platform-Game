@@ -10,12 +10,11 @@ public class MapaClass : MonoBehaviour
 
     Animator animator;
 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<Animator>();
-        currentProgress = 3;
+        currentProgress = PlayerPrefs.GetInt("current_progress");
         switch (currentProgress)
         {
             case 0:
