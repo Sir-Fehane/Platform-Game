@@ -243,6 +243,12 @@ public class PlayerScript : MonoBehaviour
             Destroy(collision.gameObject);
 
         }
+
+        if (collision.gameObject.tag == "Meta")
+        {
+            PlayerPrefs.SetInt("current_progress",1);
+            SceneManager.LoadScene(1);
+        }
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
@@ -263,6 +269,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.tag == "Water")
         {
             rigidbody.gravityScale = 0.5f;   
+            water = true;
         }
 
         if (collision.gameObject.tag == "Trampoline")
